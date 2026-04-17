@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scale Agency - Opere Globalmente Sem Perder Sua Shopify Payments</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0A0A0F;
+            --bg-secondary: #14141F;
+            --bg-card: #1A1A2E;
+            --accent: #00FFD1;
+            --accent-secondary: #6366F1;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A0A0B8;
+            --border: rgba(255, 255, 255, 0.1);
+            --gradient: linear-gradient(135deg, #00FFD1 0%, #6366F1 100%);
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Animated Background */
+        .bg-animated {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .bg-animated::before {
+            content: '';
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 255, 209, 0.08) 0%, transparent 70%);
+            top: -400px;
+            right: -400px;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        .bg-animated::after {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, transparent 70%);
+            bottom: -300px;
+            left: -300px;
+            animation: pulse 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.6; }
+        }
+
+        /* Header */
+        header {
+            position: relative;
+            z-index: 100;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(20px);
+            background: rgba(10, 10, 15, 0.8);
+        }
+
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-cta {
+            background: var(--accent);
+            color: var(--bg-primary);
+            padding: 0.7rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 209, 0.3);
+        }
+
+        /* Container */
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 8rem 0 6rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .gradient-text {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg-primary);
+            padding: 1.2rem 2.5rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 255, 209, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            padding: 1.2rem 2.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            border: 2px solid var(--border);
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            background: rgba(0, 255, 209, 0.05);
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 4rem;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .trust-item {
+            text-align: center;
+        }
+
+        .trust-number {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            display: block;
+        }
+
+        .trust-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+        }
+
+        /* Problem Section */
+        .problem-section {
+            background: var(--bg-secondary);
+            border-radius: 24px;
+            padding: 4rem;
+            margin: 0 2rem;
+            border: 1px solid var(--border);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .problem-card {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.1);
+        }
+
+        .problem-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .problem-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .problem-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Solution Section */
+        .solution-section {
+            position: relative;
+        }
+
+        .dual-system {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .system-card {
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 2px solid var(--border);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+
+        .system-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+
+        .system-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .system-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 60px rgba(0, 255, 209, 0.2);
+        }
+
+        .system-badge {
+            background: var(--bg-secondary);
+            color: var(--accent);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .system-card h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .system-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .system-features li {
+            padding: 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .system-features li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .system-highlight {
+            background: rgba(0, 255, 209, 0.1);
+            border: 1px solid rgba(0, 255, 209, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: var(--bg-secondary);
+            border-radius: 24px;
+            padding: 4rem;
+            margin: 0 2rem;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            position: relative;
+        }
+
+        .stat-number {
+            font-family: 'Outfit', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            line-height: 1;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            margin-top: 1rem;
+            font-size: 1.1rem;
+        }
+
+        /* Social Proof */
+        .proof-section {
+            position: relative;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 40px rgba(0, 255, 209, 0.15);
+        }
+
+        .stars {
+            color: #FFD700;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .author-info h4 {
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .author-role {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .result-badge {
+            background: rgba(0, 255, 209, 0.1);
+            color: var(--accent);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 1rem;
+            display: inline-block;
+        }
+
+        /* Process Section */
+        .process-timeline {
+            position: relative;
+            margin-top: 4rem;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-number {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 2px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .timeline-content {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .timeline-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .timeline-content p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #00FFD1 0%, #6366F1 100%);
+            border-radius: 24px;
+            padding: 5rem 3rem;
+            margin: 0 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .cta-section h2 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            color: var(--bg-primary);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            color: rgba(10, 10, 15, 0.8);
+            margin-bottom: 2.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-cta-dark {
+            background: var(--bg-primary);
+            color: var(--accent);
+            padding: 1.5rem 3rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-cta-dark:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(10, 10, 15, 0.4);
+        }
+
+        .urgency-text {
+            margin-top: 2rem;
+            color: var(--bg-primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--text-secondary);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 24px;
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+            border: 1px solid var(--border);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: var(--accent);
+        }
+
+        .modal h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(0, 255, 209, 0.1);
+        }
+
+        .form-submit {
+            width: 100%;
+            background: var(--accent);
+            color: var(--bg-primary);
+            padding: 1.2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 209, 0.3);
+        }
+
+        .privacy-note {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            section {
+                padding: 3rem 0;
+            }
+
+            .hero {
+                padding: 5rem 0 3rem;
+            }
+
+            .problem-section,
+            .stats-section,
+            .cta-section {
+                padding: 3rem 1.5rem;
+                margin: 0 1rem;
+            }
+
+            .dual-system,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .trust-bar {
+                gap: 1.5rem;
+            }
+
+            .timeline-item {
+                grid-template-columns: 60px 1fr;
+                gap: 1rem;
+            }
+
+            .timeline-number {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            header {
+                padding: 1rem;
+            }
+
+            .logo img {
+                height: 60px !important;
+            }
+
+            .header-cta {
+                padding: 0.6rem 1rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animated"></div>
+
+    <header>
+        <div class="logo">
+            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjYwIiB2aWV3Qm94PSIwIDAgMTgwIDYwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDwhLS0gRGVmaW5pbmRvIGdyYWRpZW50ZSBNQUlTIEJSSUxIQU5URSAtLT4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibG9nb0dyYWRpZW50IiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6IzAwRkZEMTtzdG9wLW9wYWNpdHk6MSIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojOEI4RkZGO3N0b3Atb3BhY2l0eToxIiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgCiAgPCEtLSBUZXh0byBTQ0FMRSAtIEJyYW5jbywgZW0gY2ltYSAtLT4KICA8dGV4dCB4PSIwIiB5PSIyNiIgZm9udC1mYW1pbHk9Ik91dGZpdCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC13ZWlnaHQ9IjgwMCIgZmlsbD0iI0ZGRkZGRiIgbGV0dGVyLXNwYWNpbmc9IjIiPlNDQUxFPC90ZXh0PgogIAogIDwhLS0gVGV4dG8gQUdFTkNZIC0gR3JhZGllbnRlIE1BSVMgQ0xBUk8sIGVtYmFpeG8sIG1lc21vIHRhbWFuaG8gLS0+CiAgPHRleHQgeD0iMCIgeT0iNTQiIGZvbnQtZmFtaWx5PSJPdXRmaXQsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjgiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9InVybCgjbG9nb0dyYWRpZW50KSIgbGV0dGVyLXNwYWNpbmc9IjIiPkFHRU5DWTwvdGV4dD4KPC9zdmc+" alt="Scale Agency" style="height: 55px;">
+        </div>
+        <a href="https://wa.me/5561994475296?text=Olá!%20Vim%20pelo%20site%20da%20Scale%20Agency.%20Quero%20saber%20mais%20sobre%20a%20estrutura%20dual%20Shopify!" target="_blank" class="header-cta" title="Falar no WhatsApp">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+        </a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">🌍 Sistema Exclusivo de Proteção Shopify</div>
+            <h1>
+                Venda Qualquer Produto<br>
+                Sem Medo de <span class="gradient-text">Perder Tudo</span>
+            </h1>
+            <p class="hero-subtitle">
+                Sistema dual exclusivo que permite testar produtos agressivos na Shopify Black enquanto sua Shopify Payments principal permanece 100% protegida e operacional.
+            </p>
+            <div class="hero-cta-group">
+                <a href="https://wa.me/5561994475296?text=Olá!%20Vim%20pelo%20site%20da%20Scale%20Agency.%20Quero%20blindar%20minha%20Shopify%20Payments%20agora!" target="_blank" class="btn-primary">
+                    Blindar minha Payments agora →
+                </a>
+                <a href="#como-funciona" class="btn-secondary">
+                    Ver Como Funciona ↓
+                </a>
+            </div>
+
+            <div class="trust-bar">
+                <div class="trust-item">
+                    <span class="trust-number">R$10M+</span>
+                    <span class="trust-label">Faturados por clientes</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-number">0</span>
+                    <span class="trust-label">Payments suspensas</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-number">195+</span>
+                    <span class="trust-label">Países disponíveis</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-number">24/7</span>
+                    <span class="trust-label">Operação global</span>
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: 3rem; color: var(--text-primary); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; font-family: 'Outfit', sans-serif; line-height: 1.3;">
+                " Os segredos que os grandes players não te contam "
+            </p>
+        </div>
+    </section>
+
+    <!-- PageFly Alternative Hero -->
+    <section style="background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%); padding: 6rem 0;">
+        <div class="container">
+            <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+                <h2 style="font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1.5rem; line-height: 1.2;">
+                    Chega de <span style="color: #FF6B6B; text-decoration: line-through;">PageFly</span><br>
+                    Comece a Testar <span class="gradient-text">Vários Produtos</span><br>
+                    em Uma Coleção
+                </h2>
+
+                <p style="font-size: 1.3rem; color: var(--text-secondary); margin-bottom: 2.5rem; line-height: 1.7;">
+                    Pare de depender de páginas únicas lentas e limitadas. Nossa estrutura permite criar coleções completas com dezenas de produtos testando simultaneamente - tudo protegido pelo sistema dual.
+                </p>
+
+                <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 3rem; margin-bottom: 2rem;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2.5rem; text-align: left;">
+                        <div>
+                            <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">🚀</div>
+                            <h4 style="font-size: 1.2rem; margin-bottom: 0.8rem; color: var(--accent);">Coleções Completas</h4>
+                            <p style="color: var(--text-secondary); font-size: 0.95rem;">Teste 10, 20, 50 produtos de uma vez. Não mais 1 produto por página no PageFly.</p>
+                        </div>
+
+                        <div>
+                            <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">⚡</div>
+                            <h4 style="font-size: 1.2rem; margin-bottom: 0.8rem; color: var(--accent);">Velocidade Real</h4>
+                            <p style="color: var(--text-secondary); font-size: 0.95rem;">Páginas nativas Shopify carregam 3x mais rápido que builders. Mais conversão garantida.</p>
+                        </div>
+
+                        <div>
+                            <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">🛡️</div>
+                            <h4 style="font-size: 1.2rem; margin-bottom: 0.8rem; color: var(--accent);">100% Protegido</h4>
+                            <p style="color: var(--text-secondary); font-size: 0.95rem;">Sistema dual mantém sua Payments segura enquanto testa agressivamente.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: rgba(255, 107, 107, 0.1); border: 1px solid rgba(255, 107, 107, 0.3); border-radius: 16px; padding: 2rem; margin-bottom: 2.5rem;">
+                    <p style="color: #FF6B6B; font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;">⚠️ Você Está Perdendo Dinheiro Com PageFly</p>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                        Enquanto você gasta horas criando 1 página por produto, seus concorrentes testam dezenas de produtos simultaneamente e encontram winners 10x mais rápido.
+                    </p>
+                </div>
+
+                <a href="https://wa.me/5561994475296?text=Olá!%20Vim%20pelo%20site%20da%20Scale%20Agency.%20Quero%20criar%20minha%20estrutura%20de%20testes%20e%20parar%20de%20usar%20PageFly!" target="_blank" class="btn-primary" style="font-size: 1.2rem; padding: 1.3rem 2.8rem;">
+                    Criar Minha Estrutura de Testes Agora →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section>
+        <div class="container">
+            <div class="problem-section">
+                <div class="section-header">
+                    <div class="section-label">O Problema</div>
+                    <h2 class="section-title">O Medo Que Paralisa Seu Crescimento</h2>
+                    <p class="section-subtitle">Uma única reclamação pode destruir meses de trabalho e congelar toda sua receita</p>
+                </div>
+
+                <div class="problem-grid">
+                    <div class="problem-card">
+                        <span class="problem-icon">🚫</span>
+                        <h3>Medo de Testar Produtos</h3>
+                        <p>Você evita testar novos produtos com potencial de 6 dígitos porque uma única reclamação pode derrubar sua conta e congelar todo seu dinheiro.</p>
+                    </div>
+
+                    <div class="problem-card">
+                        <span class="problem-icon">💳</span>
+                        <h3>Payments Suspensa = Game Over</h3>
+                        <p>Quando a Shopify suspende sua Payments, você perde acesso a TODO o dinheiro das vendas. Sem aviso prévio. Sem negociação. É o fim.</p>
+                    </div>
+
+                    <div class="problem-card">
+                        <span class="problem-icon">⛔</span>
+                        <h3>Limitado ao "Seguro"</h3>
+                        <p>Você só vende produtos ultra conservadores enquanto seus concorrentes escalam com produtos de alta margem que você não pode testar.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution-section" id="como-funciona">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">A Solução</div>
+                <h2 class="section-title">Sistema Dual: Duas Lojas, Zero Risco</h2>
+                <p class="section-subtitle">Rode o que quiser na Shopify Black. Sua Shopify Payments fica blindada e operacional 24/7.</p>
+            </div>
+
+            <div class="dual-system">
+                <div class="system-card">
+                    <span class="system-badge">Loja 1</span>
+                    <h3>SHOPIFY BLACK</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Liberdade total para testar e validar
+                    </p>
+                    <ul class="system-features">
+                        <li>Teste QUALQUER produto sem medo</li>
+                        <li>Campanhas agressivas de alto ROI</li>
+                        <li>Valide novos nichos rapidamente</li>
+                        <li>Experimente estratégias ousadas</li>
+                        <li>Gateway de pagamento alternativo</li>
+                    </ul>
+                    <div class="system-highlight">
+                        <strong>⚡ Funcionalidade:</strong> Esta loja recebe o cliente, apresenta o produto, processa o pedido - mas o pagamento acontece na loja protegida através de integração invisível.
+                    </div>
+                </div>
+
+                <div class="system-card">
+                    <span class="system-badge">Loja 2</span>
+                    <h3>SHOPIFY PAYMENTS</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Proteção total da sua receita
+                    </p>
+                    <ul class="system-features">
+                        <li>Shopify Payments 100% intacta</li>
+                        <li>Zero risco de suspensão</li>
+                        <li>Compliance perfeito sempre</li>
+                        <li>Receita fluindo sem interrupção</li>
+                        <li>Histórico limpo permanentemente</li>
+                    </ul>
+                    <div class="system-highlight">
+                        <strong>✓ Proteção:</strong> Esta loja NUNCA é exposta a produtos ou campanhas de risco. Ela só processa pagamentos de forma segura, mantendo sua Payments protegida para sempre.
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: rgba(0, 255, 209, 0.05); border-radius: 16px; border: 1px solid rgba(0, 255, 209, 0.2);">
+                <h4 style="font-size: 1.3rem; margin-bottom: 1rem;">Como Funciona na Prática:</h4>
+                <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.8; max-width: 800px; margin: 0 auto;">
+                    Cliente navega e compra na <strong style="color: var(--accent);">Shopify Black</strong> → Integração invisível redireciona pagamento para <strong style="color: var(--accent);">Shopify Payments protegida</strong> → Transação aprovada com segurança total → Sua Payments NUNCA é exposta ao produto de risco
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section>
+        <div class="container">
+            <div class="stats-section">
+                <div class="section-header">
+                    <div class="section-label">Resultados Comprovados</div>
+                    <h2 class="section-title">Números Que Falam Por Si</h2>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">Payments Suspensas</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Receita Protegida</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">∞</span>
+                        <span class="stat-label">Produtos Testados</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Operação Ativa</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="proof-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Depoimentos</div>
+                <h2 class="section-title">Quem Já Escalou Com Segurança</h2>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">
+                        "Depois de perder duas contas Shopify e mais de R$120k em receita congelada, encontrei a Scale Agency. Hoje testo produtos agressivos sem medo. Minha Payments principal nunca teve um problema sequer."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RS</div>
+                        <div class="author-info">
+                            <h4>Rodrigo Silva</h4>
+                            <div class="author-role">E-commerce Owner</div>
+                        </div>
+                    </div>
+                    <div class="result-badge">De R$50k → R$380k/mês em 4 meses</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">
+                        "A estrutura dual mudou completamente meu negócio. Testei 47 produtos em 3 meses - encontrei 3 winners que geram R$500k/mês consistentemente. Sem o sistema da Scale, jamais teria coragem de testar."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ML</div>
+                        <div class="author-info">
+                            <h4>Mariana Lopes</h4>
+                            <div class="author-role">Brand Owner</div>
+                        </div>
+                    </div>
+                    <div class="result-badge">47 produtos testados • 0 problemas</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">
+                        "Opero em 5 países diferentes testando produtos que nunca teria coragem antes. A Shopify Payments protegida processa milhões sem qualquer fricção. É a paz de espírito que todo empreendedor precisa."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AF</div>
+                        <div class="author-info">
+                            <h4>André Ferreira</h4>
+                            <div class="author-role">International Seller</div>
+                        </div>
+                    </div>
+                    <div class="result-badge">5 países • R$2.1M faturados</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Como Começar</div>
+                <h2 class="section-title">Do Zero à Operação Global em 4 Etapas</h2>
+            </div>
+
+            <div class="process-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-number">1</div>
+                    <div class="timeline-content">
+                        <h3>Análise Estratégica Gratuita</h3>
+                        <p>Analisamos seu negócio atual, produtos que deseja testar e estrutura ideal para seus objetivos. Mapeamos oportunidades e riscos específicos do seu nicho.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">2</div>
+                    <div class="timeline-content">
+                        <h3>Configuração do Sistema Dual</h3>
+                        <p>Implementamos a Shopify Black para testes e a Shopify Payments protegida. Integramos os sistemas de forma invisível para garantir experiência perfeita do cliente.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">3</div>
+                    <div class="timeline-content">
+                        <h3>Estrutura Internacional</h3>
+                        <p>Configuramos compliance fiscal, legal e operacional para os mercados que você deseja operar. Estrutura profissional desde o primeiro dia.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">4</div>
+                    <div class="timeline-content">
+                        <h3>Lançamento e Suporte Contínuo</h3>
+                        <p>Sua marca vai ao ar operando globalmente com proteção total. Acompanhamento técnico e estratégico para garantir escala segura e sustentável.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Agency + Branding Section -->
+    <section style="background: var(--bg-secondary); position: relative; overflow: hidden;">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Sobre a Scale Agency</div>
+                <h2 class="section-title">Muito Mais Que Infraestrutura Técnica</h2>
+                <p class="section-subtitle">Construímos marcas globais completas, não apenas lojas Shopify</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin-top: 4rem;">
+                <!-- Card 1: Quem Somos -->
+                <div style="background: var(--bg-card); padding: 3rem; border-radius: 20px; border: 1px solid var(--border);">
+                    <div style="font-size: 3rem; margin-bottom: 1.5rem;">🎯</div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Quem Somos</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.8;">
+                        Somos especialistas em criar <strong style="color: var(--accent);">infraestruturas globais de e-commerce</strong> que permitem empreendedores escalarem sem medo de perder tudo. Nossa missão é clara: construir marcas preparadas para operar internacionalmente com total segurança.
+                    </p>
+                </div>
+
+                <!-- Card 2: Branding Profissional -->
+                <div style="background: var(--bg-card); padding: 3rem; border-radius: 20px; border: 1px solid var(--border); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: -20px; right: -20px; width: 150px; height: 150px; background: var(--gradient); opacity: 0.1; border-radius: 50%;"></div>
+                    <div style="font-size: 3rem; margin-bottom: 1.5rem;">🎨</div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Branding Global Profissional</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+                        Não criamos "mais uma loja Shopify genérica". Desenvolvemos <strong style="color: var(--accent);">identidade visual completa</strong> preparada para competir nos mercados internacionais mais exigentes.
+                    </p>
+                    <ul style="list-style: none; margin: 0; padding: 0;">
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.8rem; color: var(--text-secondary);">
+                            <span style="color: var(--accent); font-size: 1.2rem;">✓</span>
+                            Logo profissional + paleta de cores estratégica
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.8rem; color: var(--text-secondary);">
+                            <span style="color: var(--accent); font-size: 1.2rem;">✓</span>
+                            Design de loja otimizado para conversão
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.8rem; color: var(--text-secondary);">
+                            <span style="color: var(--accent); font-size: 1.2rem;">✓</span>
+                            Copywriting persuasivo em múltiplos idiomas
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.8rem; color: var(--text-secondary);">
+                            <span style="color: var(--accent); font-size: 1.2rem;">✓</span>
+                            Fotografia de produto de alto padrão
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.8rem; color: var(--text-secondary);">
+                            <span style="color: var(--accent); font-size: 1.2rem;">✓</span>
+                            Posicionamento estratégico para cada mercado
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Card 3: Diferencial -->
+                <div style="background: var(--bg-card); padding: 3rem; border-radius: 20px; border: 1px solid var(--border);">
+                    <div style="font-size: 3rem; margin-bottom: 1.5rem;">🚀</div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Nosso Diferencial</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.8;">
+                        Combinamos <strong style="color: var(--accent);">tecnologia de ponta</strong>, conhecimento profundo da Shopify e anos de experiência em e-commerce internacional para entregar resultados que vão além de "criar uma loja". 
+                    </p>
+                    <div style="margin-top: 1.5rem; padding: 1.2rem; background: rgba(0, 255, 209, 0.05); border-left: 3px solid var(--accent); border-radius: 8px;">
+                        <p style="color: var(--text-primary); font-weight: 600; font-size: 0.95rem; margin: 0;">
+                            "Sua marca pronta para conquistar os EUA, Europa, Canadá e mais 190+ países desde o primeiro dia."
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Highlight Bar -->
+            <div style="margin-top: 4rem; background: linear-gradient(135deg, rgba(0, 255, 209, 0.1) 0%, rgba(99, 102, 241, 0.1) 100%); border: 1px solid var(--accent); border-radius: 20px; padding: 3rem; text-align: center;">
+                <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">🌍 Marcas Que Rodam no Mundo Todo</h3>
+                <p style="font-size: 1.2rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto; line-height: 1.8;">
+                    Não apenas traduzimos textos. Criamos <strong style="color: var(--accent);">posicionamento estratégico adaptado</strong> para cada cultura, desenvolvemos identidade visual que funciona globalmente, e construímos autoridade de marca em múltiplos mercados simultaneamente.
+                </p>
+                <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 2rem;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 2rem; color: var(--accent); font-weight: 800;">195+</div>
+                        <div style="color: var(--text-secondary); font-size: 0.9rem;">Países Disponíveis</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2rem; color: var(--accent); font-weight: 800;">135+</div>
+                        <div style="color: var(--text-secondary); font-size: 0.9rem;">Moedas Suportadas</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2rem; color: var(--accent); font-weight: 800;">24/7</div>
+                        <div style="color: var(--text-secondary); font-size: 0.9rem;">Operação Global</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section>
+        <div class="container">
+            <div class="cta-section">
+                <h2>Pare de Perder Lojas.<br>Comece a Escalar.</h2>
+                <p>Estrutura completa de e-commerce global com proteção total da sua Shopify Payments</p>
+                <a href="https://wa.me/5561994475296?text=Olá!%20Vim%20pelo%20site%20da%20Scale%20Agency.%20Quero%20minha%20análise%20gratuita%20para%20começar%20a%20escalar!" target="_blank" class="btn-cta-dark">
+                    Quero Minha Análise Gratuita Agora
+                </a>
+                <p class="urgency-text">⚡ Vagas limitadas • Apenas 5 novos clientes por mês</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="logo" style="margin-bottom: 1rem;">SCALE AGENCY</div>
+            <p>© 2026 Scale Agency. Infraestrutura escalável para e-commerce de alto desempenho.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem;">CNPJ: 65.648.782/0001-15</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
